@@ -1,0 +1,146 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #011627 0%, #012a4a 35%, #01497c 70%, #2a6f97 100%);
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(72, 202, 228, 0.45), 0 8px 24px rgba(0, 0, 0, 0.25);
+  animation: glow-pulse 3.5s ease-in-out infinite;
+  padding: 40px;
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 40px rgba(72, 202, 228, 0.45), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 70px rgba(72, 202, 228, 0.75), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.converter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.currency-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.currency-row .currency-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.currency-select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.currency-select select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.amount-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.amount-field input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.convert-button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.convert-button:hover {
+  background: #1d4ed8;
+}
+
+.convert-button:disabled {
+  background: #93b4f0;
+  cursor: not-allowed;
+}
+
+.swap-button {
+  align-self: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.swap-button:hover {
+  background: #f0f0f0;
+}
+
+.result-display {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.result-amount {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.rate-info {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+.error {
+  color: #c0392b;
+}
+
+.field-error {
+  margin: 0;
+  font-size: 13px;
+  color: #c0392b;
+}
+
+@media (max-width: 480px) {
+  .currency-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .swap-button {
+    align-self: center;
+  }
+}
