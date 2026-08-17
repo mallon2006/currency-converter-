@@ -1,3 +1,6 @@
+import CurrencyFlag from './CurrencyFlag'
+import { getCurrencyText } from '../utils/currencyDisplay'
+
 // Formats a number with 2 decimal places and thousands separators,
 // e.g. 91500.5 -> "91,500.50".
 function formatNumber(value, decimals = 2) {
@@ -28,6 +31,10 @@ function ResultDisplay({ result }) {
     <div className="result-display">
       <p className="result-amount">
         {formatNumber(result.amount)} {result.base} = {formatNumber(convertedAmount)} {toCurrency}
+      </p>
+      <p className="result-target-name">
+        <CurrencyFlag code={toCurrency} />
+        <span>{getCurrencyText(toCurrency)}</span>
       </p>
       <p className="rate-info">
         1 {result.base} = {formatNumber(rate, 4)} {toCurrency} &middot; as of {result.date}

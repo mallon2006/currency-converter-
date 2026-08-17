@@ -52,17 +52,95 @@
 }
 
 .currency-select {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.currency-select select {
-  padding: 8px;
+.currency-select-label {
+  font-size: 14px;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
   font-size: 16px;
+  font-family: inherit;
+  background: #fff;
   border-radius: 6px;
   border: 1px solid #ccc;
-  min-height: 44px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-trigger:hover {
+  border-color: #999;
+}
+
+.dropdown-trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dropdown-trigger-content span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-chevron {
+  flex-shrink: 0;
+  color: #666;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 4px 0 0;
+  padding: 4px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  list-style: none;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background: #f0f4fa;
+}
+
+.dropdown-option.selected {
+  background: #e7edfc;
+  font-weight: bold;
+}
+
+.currency-flag {
+  flex-shrink: 0;
+  border-radius: 2px;
+  display: block;
 }
 
 .amount-field {
@@ -127,6 +205,16 @@
   font-weight: bold;
 }
 
+.result-target-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 15px;
+  color: #333;
+}
+
 .rate-info {
   margin-top: 4px;
   font-size: 13px;
@@ -171,6 +259,10 @@
 
   .result-amount {
     font-size: 19px;
+  }
+
+  .result-target-name {
+    font-size: 14px;
   }
 
   .rate-info {
