@@ -30,6 +30,9 @@ function App() {
   const [error, setError] = useState(null)
   const [converting, setConverting] = useState(false)
   const [convertError, setConvertError] = useState(null)
+  // Bumped on every successful conversion so ResultDisplay remounts and
+  // its entrance animation replays each time, not just the first time.
+  const [resultKey, setResultKey] = useState(0)
 
   // Load the list of supported currencies once, when the app first mounts.
   useEffect(() => {
@@ -63,6 +66,7 @@ function App() {
     try {
       const data = await convert(Number(amount), fromCurrency, toCurrency)
       setResult(data)
+      setResultKey((key) => key + 1)
     } catch {
       // convert() already logs the details to the console.
       setConvertError('Could not get the exchange rate. Please check your connection and try again.')
@@ -101,7 +105,7 @@ function App() {
               converting={converting}
             />
             {convertError && <p className="error">{convertError}</p>}
-            <ResultDisplay result={result} />
+            <ResultDisplay key={resultKey} result={result} />
           </>
         )}
       </div>

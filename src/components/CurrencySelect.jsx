@@ -104,48 +104,46 @@ function CurrencySelect({ id, label, value, onChange, currencies }) {
         </span>
       </button>
 
-      {isOpen && (
-        <div className="dropdown-panel">
-          <input
-            ref={searchInputRef}
-            type="text"
-            className="dropdown-search"
-            placeholder="Search currency..."
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            aria-label={`Search ${label.toLowerCase()} currencies`}
-          />
+      <div className={isOpen ? 'dropdown-panel open' : 'dropdown-panel'} aria-hidden={!isOpen}>
+        <input
+          ref={searchInputRef}
+          type="text"
+          className="dropdown-search"
+          placeholder="Search currency..."
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          aria-label={`Search ${label.toLowerCase()} currencies`}
+        />
 
-          <ul className="dropdown-list" role="listbox" aria-labelledby={labelId}>
-            {isSearching ? (
-              (() => {
-                const results = allCodes.filter((code) =>
-                  getCurrencyText(code).toLowerCase().includes(query),
-                )
-                return results.length > 0 ? (
-                  results.map(renderOption)
-                ) : (
-                  <li className="dropdown-empty" role="presentation">
-                    No currencies found
-                  </li>
-                )
-              })()
-            ) : (
-              <>
-                <li className="dropdown-group-label" role="presentation">
-                  Popular
+        <ul className="dropdown-list" role="listbox" aria-labelledby={labelId}>
+          {isSearching ? (
+            (() => {
+              const results = allCodes.filter((code) =>
+                getCurrencyText(code).toLowerCase().includes(query),
+              )
+              return results.length > 0 ? (
+                results.map(renderOption)
+              ) : (
+                <li className="dropdown-empty" role="presentation">
+                  No currencies found
                 </li>
-                {POPULAR_CODES.filter((code) => allCodes.includes(code)).map(renderOption)}
+              )
+            })()
+          ) : (
+            <>
+              <li className="dropdown-group-label" role="presentation">
+                Popular
+              </li>
+              {POPULAR_CODES.filter((code) => allCodes.includes(code)).map(renderOption)}
 
-                <li className="dropdown-group-label" role="presentation">
-                  All currencies
-                </li>
-                {allCodes.filter((code) => !POPULAR_CODES.includes(code)).map(renderOption)}
-              </>
-            )}
-          </ul>
-        </div>
-      )}
+              <li className="dropdown-group-label" role="presentation">
+                All currencies
+              </li>
+              {allCodes.filter((code) => !POPULAR_CODES.includes(code)).map(renderOption)}
+            </>
+          )}
+        </ul>
+      </div>
     </div>
   )
 }
